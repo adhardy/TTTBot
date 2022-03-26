@@ -1,0 +1,10 @@
+📢WTRL TTT📢
+📆<<date>>
+
+ℹ️Event infoℹ️
+This weeks course is <<route>> (<<num_laps>> laps)
+<<date>>
+
+TOTAL DISTANCE: <<distance_km>>KM / <<distance_mi>> MILES
+
+Bike choice: <<bike_choice>>
