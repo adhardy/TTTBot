@@ -1,6 +1,7 @@
 import discord
 from pathlib import Path
 import logging
+
 logger = logging.getLogger(__name__)
 
 # PROJECT IMPORTS
@@ -9,8 +10,8 @@ from tttbot.utils.config import Config
 # TYPE CHECKING
 from typing import *
 
-class Client(discord.Client):
 
+class Client(discord.Client):
     def __init__(self, config_path: Union[str, Path]):
         super().__init__()
         self.config = Config("config.yml")
@@ -20,14 +21,13 @@ class Client(discord.Client):
 
     # @client.event
     async def on_ready(self):
-        logger.info('We have logged in as {0.user}'.format(self))
+        logger.info("We have logged in as {0.user}".format(self))
 
     # @client.event
     async def on_message(self, message):
         if message.author == self.user:
             return
 
-        if message.content.startswith('$hello'):
+        if message.content.startswith("$hello"):
             logger.debug("hello")
-            await message.channel.send('Hello!')
-    
+            await message.channel.send("Hello!")

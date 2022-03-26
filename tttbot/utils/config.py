@@ -2,29 +2,33 @@ import yaml
 from pathlib import Path
 
 import logging
+
 logger = logging.getLogger(__name__)
 
 from typing import *
+
 
 class Config:
     """
     Loads a yaml config file and provides access to the config dictionary through class methods.
 
-    :param path: Path to the config file.   
+    :param path: Path to the config file.
     :param default_config_path: Path to the default config file. Default is "data/default_config.yml".
     :return: None
     """
 
     def __init__(
-        self, 
-        path: Union[Path, str], 
-        default_config_path: Union[Path, str] = Path("data", "default_config.yml")
-        ):
+        self,
+        path: Union[Path, str],
+        default_config_path: Union[Path, str] = Path("data", "default_config.yml"),
+    ):
 
         self.default_config_path: Path = Path(default_config_path)
         self._config: Dict[str, Any] = load_yaml(self.default_config_path)
         self.path: Path = Path(path)
-        self.update_config(load_yaml(self.path)) # replace the default config with user config
+        self.update_config(
+            load_yaml(self.path)
+        )  # replace the default config with user config
 
     def update_config(self, config_dict: Dict[str, Any]):
         """
@@ -46,13 +50,14 @@ class Config:
         self._config[key] = value
 
     def __iter__(self) -> Iterator[str]:
-        return iter(self._config)  
+        return iter(self._config)
 
     def __contains__(self, key: str) -> bool:
-        return key in self._config 
-    
+        return key in self._config
+
     def get(self, key: str, default: Any) -> Any:
         return self._config.get(key, default)
+
 
 def load_yaml(path: Path):
 
