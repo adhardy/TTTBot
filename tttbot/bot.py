@@ -4,7 +4,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 # PROJECT IMPORTS
-from tttbot import Config 
+from tttbot.utils.config import Config
 
 # TYPE CHECKING
 from typing import *
